@@ -213,7 +213,7 @@ export default function VendorVehicleRentalsPage() {
           {/* Actions */}
           <div className="mt-4 flex gap-2">
             <button
-              onClick={() => navigate ? navigate(`/vehicle-rental/${rental._id}`) : router.push(`/vehicle-rental/${rental._id}`)}
+              onClick={() => navigate ? navigate(`/vehicle-rental/details/${rental._id}`) : router.push(`/vehicle-rental/details/${rental._id}`)}
               className="flex-1 rounded-lg bg-blue-500 px-3 py-2 text-sm font-medium text-white transition hover:bg-blue-600"
             >
               <FaEye className="mr-1 inline" />

@@ -37,8 +37,8 @@ const tours: CategoryCard[] = [
   { title: "Hiking", icon: FaHiking, href: "/adventures?category=hiking" },
   { title: "Camping", icon: FaCampground, href: "/adventures?category=camping" },
   { title: "Water Rafting", icon: FaShip, href: "/adventures?category=water-rafting" },
-  { title: "Cars", icon: FaCarSide, href: "/vehicle-rental?category=cars" },
-  { title: "Bikes", icon: FaBiking, href: "/vehicle-rental?category=bikes" },
+  { title: "Cars", icon: FaCarSide, href: "/vehicle-rental/cars" },
+  { title: "Bikes", icon: FaBiking, href: "/vehicle-rental/bikes" },
 ];
 // ✅ Animation direction for each card (desktop only)
 const desktopAnim = [

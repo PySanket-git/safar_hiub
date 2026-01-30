@@ -83,9 +83,9 @@ const services = [
     iconBg: "bg-purple-100 text-purple-600",
     icon: <FaCarSide className="text-2xl" />,
     subServices: [
-      { label: "Cars", href: "/vehicle-rental?category=cars", icon: <FaCarSide /> },
-      { label: "Bikes", href: "/vehicle-rental?category=bikes", icon: <FaBiking /> },
-      { label: "Car with Driver", href: "/vehicle-rental?category=car-with-driver", icon: <FaUser /> },
+      { label: "Cars", href: "/vehicle-rental/cars", icon: <FaCarSide /> },
+      { label: "Bikes", href: "/vehicle-rental/bikes", icon: <FaBiking /> },
+      { label: "Car with Driver", href: "/vehicle-rental/car-with-driver", icon: <FaUser /> },
     ],
   },
 ];

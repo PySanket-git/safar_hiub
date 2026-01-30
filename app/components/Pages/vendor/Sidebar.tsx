@@ -10,6 +10,7 @@ import {
   UserCog,
   LogOut,
   ChevronDown,
+  ClipboardList,
 } from "lucide-react";
 import { MdOutlineCancel } from "react-icons/md";
 
@@ -124,25 +125,6 @@ export default function Sidebar({ onNavigate, onLogout }: SidebarProps) {
   const filteredProperties = propertiesSubmenu.filter((item) =>
     allowedServices.includes(item.id)
   );
-  
-  // For sellers, show simplified menu with just Products and Categories
-  // const sellerLinks = isSeller
-  //   ? [
-  //       {
-  //         id: "seller-products",
-  //         name: "Products",
-  //         icon: <FaShoppingCart size={16} />,
-  //         href: "/vendor/properties/seller/products",
-  //       },
-  //       {
-  //         id: "seller-categories",
-  //         name: "Categories",
-  //         icon: <FaTag size={16} />,
-  //         href: "/vendor/properties/seller/categories",
-  //       },
-  //     ]
-  //   : [];
-  const hasPropertyEntries = filteredProperties.length > 0 ;
 
   const menu = [
     { name: "Dashboard", icon: <LayoutDashboard size={18} />, href: "/vendor" },
@@ -175,6 +157,8 @@ export default function Sidebar({ onNavigate, onLogout }: SidebarProps) {
 
     { name: "Purchases", icon: <CalendarCheck size={18} />, href: "/vendor/purchases" },
     { name: "Cancellations", icon: <MdOutlineCancel size={18} />, href: "/vendor/cancellations" },
+
+    { name: "Requirements", icon: <ClipboardList size={18} />, href: "/vendor/requirements" },
 
     { name: "Payment", icon: <CreditCard size={18} />, href: "/vendor/payments" },
 

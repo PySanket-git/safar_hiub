@@ -290,7 +290,7 @@ const VehicleRentalDetailClient: React.FC<Props> = ({ rental }) => {
       const key = vehicle._id?.toString() || vehicle.model;
       params.append("vehicles", `${key}:${qty}`);
     });
-    router.push(`/vehicle-rental/${rental._id}/book?${params.toString()}`);
+    router.push(`/vehicle-rental/details/${rental._id}/book?${params.toString()}`);
   };
 
   const facilities = rental.popularFacilities || [];

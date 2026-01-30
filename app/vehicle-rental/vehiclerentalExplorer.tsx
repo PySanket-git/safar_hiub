@@ -2,7 +2,7 @@
 "use client";
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, useParams } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -90,7 +90,7 @@ export const RentalCard = ({
 
   return (
     <Link
-      href={`/vehicle-rental/${rental._id}`}
+      href={`/vehicle-rental/details/${rental._id}`}
       className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-md transition hover:-translate-y-1 hover:shadow-xl"
     >
       <div className="relative h-56 w-full">
@@ -210,8 +210,11 @@ export const RentalCard = ({
 
 export default function VehicleRentalExplorer({ initialCategory = "all" }: VehicleRentalExplorerProps) {
   const params = useSearchParams();
+  const routeParams = useParams();
   const router = useRouter();
-  const slug = params.get("category") || undefined;
+  const pathSlug = (routeParams as any)?.category;
+  const querySlug = params.get("category");
+  const slug = pathSlug ?? querySlug ?? undefined;
   const fromSlug = slug ? VEHICLE_RENTAL_SLUG_TO_VALUE[slug] ?? "all" : initialCategory;
   const normalizedInitialCategory: CategoryValue = VEHICLE_RENTAL_CATEGORIES.some(
     (tab) => tab.value === fromSlug
@@ -357,14 +360,15 @@ export default function VehicleRentalExplorer({ initialCategory = "all" }: Vehic
     (value: CategoryValue) => {
       setActiveCategory(value);
       const nextSearch = new URLSearchParams(params.toString());
+      // Remove any existing category query param — we use path-based categories instead
+      nextSearch.delete("category");
+      const trailing = nextSearch.toString();
       if (value === "all") {
-        nextSearch.delete("category");
+        router.replace(trailing ? `/vehicle-rental?${trailing}` : `/vehicle-rental`, { scroll: false });
       } else {
         const slugValue = VEHICLE_RENTAL_VALUE_TO_SLUG[value] || value;
-        nextSearch.set("category", slugValue);
+        router.replace(trailing ? `/vehicle-rental/${slugValue}?${trailing}` : `/vehicle-rental/${slugValue}`, { scroll: false });
       }
-      const queryString = nextSearch.toString();
-      router.replace(queryString ? `/vehicle-rental?${queryString}` : "/vehicle-rental", { scroll: false });
     },
     [params, router]
   );

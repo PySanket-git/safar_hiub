@@ -304,7 +304,7 @@ const VehicleRentalBookingFormClient: React.FC<Props> = ({ rental, searchParams 
             </p>
             <button
               type="button"
-              onClick={() => router.push(`/vehicle-rental/${rental._id}`)}
+              onClick={() => router.push(`/vehicle-rental/details/${rental._id}`)}
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-green-600 px-5 py-3 text-sm font-semibold text-white shadow hover:bg-green-700"
             >
               <FaArrowLeft /> Back to vehicle list
@@ -356,7 +356,7 @@ const VehicleRentalBookingFormClient: React.FC<Props> = ({ rental, searchParams 
             <div>
               <button
                 type="button"
-                onClick={() => router.push(`/vehicle-rental/${rental._id}`)}
+                onClick={() => router.push(`/vehicle-rental/details/${rental._id}`)}
                 className="inline-flex items-center gap-2 rounded-full bg-green-50 px-3 py-1 text-xs font-semibold text-green-700 transition hover:bg-green-100"
               >
                 <FaArrowLeft /> Back to vehicle selection

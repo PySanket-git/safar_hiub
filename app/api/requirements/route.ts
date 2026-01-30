@@ -8,9 +8,9 @@ export async function GET() {
   try {
     await dbConnect();
 
-    const requirements = await UserRequirement.find().sort({
-      createdAt: -1,
-    });
+    const requirements = await UserRequirement.find()
+      .sort({ createdAt: -1 })
+      .populate("user", "fullName email avatar contactNumber");
 
     return NextResponse.json({
       success: true,

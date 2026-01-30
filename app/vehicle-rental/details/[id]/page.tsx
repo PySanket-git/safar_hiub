@@ -1,10 +1,10 @@
-// app/vehicle-rental/[id]/page.tsx
+// app/vehicle-rental/details/[id]/page.tsx
 import { notFound } from "next/navigation";
 import VehicleRental from "@/models/VehicleRental";
 import dbConnect from "@/lib/config/database";
 import VehicleRentalDetailClient, {
   type VehicleRentalDetailPayload,
-} from "../vehiclerentalDetailsClient";
+} from "../../vehiclerentalDetailsClient";
 
 async function fetchRental(id: string): Promise<VehicleRentalDetailPayload | null> {
   await dbConnect();

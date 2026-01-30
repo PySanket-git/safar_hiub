@@ -21,7 +21,7 @@ export default function CartPage() {
       case "Adventure":
         return `/adventures/details/${itemId}`;
       case "VehicleRental":
-        return `/vehicle-rental/${itemId}`;
+        return `/vehicle-rental/details/${itemId}`;
       default:
         return "";
     }

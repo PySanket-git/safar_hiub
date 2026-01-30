@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation";
 import VehicleRental from "@/models/VehicleRental";
 import dbConnect from "@/lib/config/database";
-import VehicleRentalBookingFormClient from "../../VehicleRentalBookingFormClient";
-import type { VehicleRentalDetailPayload } from "../../vehiclerentalDetailsClient";
+import VehicleRentalBookingFormClient from "../../../VehicleRentalBookingFormClient";
+import type { VehicleRentalDetailPayload } from "../../../vehiclerentalDetailsClient";
 
 async function fetchVehicleRental(id: string): Promise<VehicleRentalDetailPayload | null> {
   await dbConnect();
@@ -25,4 +25,3 @@ export default async function VehicleRentalBookingPage({ params, searchParams }:
 
   return <VehicleRentalBookingFormClient rental={rental} searchParams={query} />;
 }
-

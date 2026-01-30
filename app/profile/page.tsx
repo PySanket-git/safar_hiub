@@ -53,6 +53,12 @@ export default function ProfilePage() {
             Back to Home
           </button>
           <button
+            onClick={() => router.push("/profile/requirements")}
+            className="bg-linear-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-4 md:px-6 py-2 rounded-xl font-medium shadow-md transition-all duration-200 text-sm"
+          >
+            Post Requirement
+          </button>
+          <button
             onClick={() => router.push("/profile/edit")}
             className="bg-linear-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-4 md:px-6 py-2 rounded-xl font-medium shadow-md transition-all duration-200 text-sm"
           >
