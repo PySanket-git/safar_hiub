@@ -20,7 +20,7 @@ export default function EarningsOverviewChart({ refreshKey = 0 }: { refreshKey?:
     const fetchEarnings = async () => {
       try {
         if (data.length === 0) setLoading(true);
-        const res = await fetch(`/api/vendor/stats?t=${Date.now()}`, { 
+        const res = await fetch(`/api/vendor/stats?t=${Date.now()}`, {
           credentials: "include",
           cache: "no-store"
         });
@@ -84,7 +84,13 @@ export default function EarningsOverviewChart({ refreshKey = 0 }: { refreshKey?:
             <BarChart data={data}>
               <XAxis dataKey="period" stroke="#888" />
               <YAxis stroke="#888" tickFormatter={(value) => `${value / 1000}k`} />
-              <Tooltip formatter={(value: number) => formatCurrency(value)} />
+              <Tooltip
+                formatter={(value) => {
+                  if (Array.isArray(value)) return value.join(", ");
+                  return formatCurrency(Number(value ?? 0));
+                }}
+              />
+
               {(supportsServices || supportsProducts) && <Legend />}
               {supportsServices && <Bar dataKey="service" stackId="earnings" fill="#0ea5e9" name="Service" />}
               {supportsProducts && <Bar dataKey="product" stackId="earnings" fill="#a855f7" name="Product" />}
